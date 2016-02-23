@@ -123,7 +123,7 @@ Com o comando crontab -e você abrirá o terminal de edição, basta apertar "in
 
 Fique atento aos logs do MySQL-Backup que estão armazenados em ```/var/log/mysql-backup.log```. 
 
-Caso queira ter um controle destes logs, para que não ocupem espaço em disco sem necessidade, você pode utilizar o logrotate. O logrotate é uma ferramenta que faz o rotacionamento de logs no Linux. Com ele você consegue limitar o tamanho dos logs, manter logs por dias específicos, compactar e outras diversas opções. Para efetuar esta configuração, edite o arquivo /etc/logrotate.conf e adicione no final do arquivo. 
+Caso queira ter um controle destes logs, para que não ocupem espaço em disco sem necessidade, você pode utilizar o logrotate. O logrotate é uma ferramenta que faz o rotacionamento de logs no Linux. Com ele você consegue limitar o tamanho dos logs, manter logs por dias específicos, compactar e outras diversas opções. Para efetuar esta configuração, edite o arquivo ```/etc/logrotate.conf``` e adicione no final do arquivo: 
 ```
     /var/log/mysql-backup.log {
             daily                   #Cria um log por dia
