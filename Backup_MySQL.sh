@@ -88,7 +88,7 @@ fi
 
 #Funcao que consulta todos os bancos do seu servidor e faz o backup
 function Get-Databases(){
-	for DB in `mysql -u$USER -p$SECRET -e "SHOW DATABASES"|grep -v Database`; do
+	for DB in `mysql -u$USER -p$SECRET -e "SHOW DATABASES"|egrep -vi 'Database|mysql|information_schema|performance_schema'`; do
 		echo "`date`  -  Fazendo backup do banco $DB"
 		mysqldump -u$USER -p$SECRET  $DB > $BACKUP_TEMP/$DB.sql
 	done
