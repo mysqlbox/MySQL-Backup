@@ -102,7 +102,7 @@ function Zip-Databases(){
 
 #Funca que faz o upload do backup
 function Upload-Databases(){
-	$DROPBOX_FILE upload $BACKUP_TEMP/*.tar.gz >> $LOG_FILE 2>&1
+	$DROPBOX_FILE upload $BACKUP_TEMP/*.tar.gz $BACKUP_NAME.tar.gz >> $LOG_FILE 2>&1
 	rm -rf $BACKUP_TEMP/*
 }
 
