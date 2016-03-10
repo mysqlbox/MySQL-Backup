@@ -28,6 +28,7 @@ PERMISSIONS=`stat -c %a $BACKUP_SHELL 2>&1`		#Pega as permissoes do shell
 DROPBOX_PATH="/usr/local/bin/Dropbox-Uploader" 		#Local de instalacao do Dropbox-Uploader
 DROPBOX_FILE="$DROPBOX_PATH/dropbox_uploader.sh"	#Local do Dropbox-Uploader.sh
 LOG_FILE="/var/log/mysql-backup.log" 			#Local dos logs
+IGNORED_DB="information_schema|performance_schema"      #Bancos ignorados pela rotina do backup separados por pipe (|)
 USER="" 						#Usuario do backup
 SECRET="" 						#Senha do usuario
 
@@ -88,7 +89,7 @@ fi
 
 #Funcao que consulta todos os bancos do seu servidor e faz o backup
 function Get-Databases(){
-	for DB in `mysql -u$USER -p$SECRET -e "SHOW DATABASES"|egrep -vi 'Database|information_schema|performance_schema'`; do
+	for DB in `mysql -u$USER -p$SECRET -e "SHOW DATABASES"|egrep -vi 'Database|'$IGNORED_DB`; do
 		echo "`date`  -  Fazendo backup do banco $DB"
 		mysqldump -u$USER -p$SECRET  $DB > $BACKUP_TEMP/$DB.sql
 	done
