@@ -24,6 +24,7 @@ BACKUP_NAME="backup-`hostname`-`date +%d_%m_%Y`"	#Nome que ficara o backup. Ex: 
 BACKUP_PATH="/usr/local/bin/MySQL-Backup"		#Local do diretorio do script
 BACKUP_TEMP="$BACKUP_PATH/tmp" 				#Local temporario dos backups
 BACKUP_SHELL="$BACKUP_PATH/Backup_MySQL.sh"		#Shell do backup
+REMOTE_FILE="/"                                         #Diretorio Remoto (Drop Box)
 PERMISSIONS=`stat -c %a $BACKUP_SHELL 2>&1`		#Pega as permissoes do shell
 DROPBOX_PATH="/usr/local/bin/Dropbox-Uploader" 		#Local de instalacao do Dropbox-Uploader
 DROPBOX_FILE="$DROPBOX_PATH/dropbox_uploader.sh"	#Local do Dropbox-Uploader.sh
@@ -87,7 +88,7 @@ if [ -z $SECRET ]; then
 fi
 
 #Funcao que consulta todos os bancos do seu servidor e faz o backup
-function Get-Databases(){
+GetDatabases(){
 	for DB in `mysql -u$USER -p$SECRET -e "SHOW DATABASES"|grep -v Database`; do
 		echo "`date`  -  Fazendo backup do banco $DB"
 		mysqldump -u$USER -p$SECRET  $DB > $BACKUP_TEMP/$DB.sql
@@ -95,18 +96,18 @@ function Get-Databases(){
 }
 
 #Funcao que compact dos backups
-function Zip-Databases(){
+ZipDatabases(){
 	cd $BACKUP_TEMP
 	tar -czf $BACKUP_NAME.tar.gz *.sql
 }
 
 #Funca que faz o upload do backup
-function Upload-Databases(){
-	$DROPBOX_FILE upload $BACKUP_TEMP/*.tar.gz >> $LOG_FILE 2>&1
+UploadDatabases(){
+	$DROPBOX_FILE upload $BACKUP_TEMP/*.tar.gz $REMOTE_FILE >> $LOG_FILE 2>&1
 	rm -rf $BACKUP_TEMP/*
 }
 
 #Chama as funcoes criadas acima
-Get-Databases >> $LOG_FILE 2>&1
-Zip-Databases
-Upload-Databases
+GetDatabases >> $LOG_FILE 2>&1
+ZipDatabases
+UploadDatabases
