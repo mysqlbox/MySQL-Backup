@@ -1,5 +1,5 @@
 MySQL-Backup
-=============
+==============
 
 É fato que devemos ter backups íntegros das nossas aplicações e servidores. Um backup confiável pode ser a diferença entre você ter que trabalhar durante algumas horas ou alguns dias ou até mesmo a diferença entre o sucesso ou a falência de uma empresa. Nada é mais frustrante, desmotivante e caro do que ter que refazer todo um sistema por uma simples falha no seu backup. 
 
