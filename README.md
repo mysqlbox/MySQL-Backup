@@ -128,7 +128,7 @@ Caso queira ter um controle destes logs, para que não ocupem espaço em disco s
     /var/log/mysql-backup.log {
             daily                   #Cria um log por dia
             create 0600 root root   #Permissão do arquivo de log
-            rotate 4                #Quantos logs antigos serão mantidos
+            rotate 4                #Quantos logs serão mantidos
     }
 ```
 
