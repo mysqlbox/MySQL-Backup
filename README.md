@@ -132,4 +132,4 @@ Caso queira ter um controle destes logs, para que não ocupem espaço em disco s
     }
 ```
 
-Tutorial disponível em: http://www.mysqlbox.com.br/backup-mysql-api-dropbox/
+Tutorial disponível em: https://www.mysqlbox.com.br/backup-mysql-api-dropbox/
