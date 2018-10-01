@@ -7,7 +7,7 @@
 # Este programa e um software livre; voce pode redistribui-lo e / ou modifica-lo 
 # sob os termos da GNU General Public License como publicado pela
 # Free Software Foundation; tanto a versao 3 da Licenca, ou
-# (A seu criterio) qualquer versao posterior.
+# (A seu critério) qualquer versao posterior.
 #
 # Este programa a distribuido para ajudar todos DBA,
 # mas SEM QUALQUER GARANTIA; mesmo sem a garantia implicita de
