@@ -108,7 +108,7 @@ UploadDatabases(){
 	rm -rf $BACKUP_TEMP/*
 }
 
-#Chama as funcoes criadas acima
+#Executa o Backup
 GetDatabases >> $LOG_FILE 2>&1
 ZipDatabases
 UploadDatabases
